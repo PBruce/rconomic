@@ -10,6 +10,20 @@ module Economic
     end
     
     
+    def get_entries_by_number(min_number, max_number)
+      response = session.request(entity_class.soap_action('GetEntriesByNumber')) do
+        soap.body = {
+          'accountHandle' => {
+              'Number' => @number
+            },
+          'minNumber' => min_number,
+          'maxNumber' => max_number
+        }
+      end
+
+      build_array(response)
+    end
+    
     protected
     
     def build_soap_data
