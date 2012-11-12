@@ -14,7 +14,7 @@ module Economic
       response = session.request(soap_action('GetEntriesByNumber')) do
         soap.body = {
           'accountHandle' => {
-              'Number' => @number
+              'Number' => self.number
             },
           'minNumber' => min_number,
           'maxNumber' => max_number
