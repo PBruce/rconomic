@@ -30,8 +30,8 @@ module Economic
     end
     
     # Gets data for Entity from the API. Returns Hash with the response data
-    def get_data_array(entities)
-      entity_handles = entities.map {|handle| Entity::Handle.new(handle) unless handle.is_a?(Entity::Handle) }
+    def get_data_array(entity_handles)
+      # entity_handles = entities.map {|handle| Entity::Handle.new(handle) unless handle.is_a?(Entity::Handle) }
 
       response = session.request(entity_class.soap_action(:get_data_array)) do
         # 'EntryHandle' => { 'SerialNumber' => handle.serial_number }
@@ -39,8 +39,13 @@ module Economic
         #                   <SerialNumber>int</SerialNumber>
         #                 </EntryHandle>
         
+        puts entity_handles
+        
+        entity_handles_soap = entity_handles.map {|handle| { 'EntryHandle' => { 'SerialNumber' => handle.number } } }        
+        puts entity_handles_soap
+        
         soap.body = {
-          'entityHandles' => entity_handles.map {|handle| { 'EntryHandle' => { 'SerialNumber' => handle.number } } }
+          'entityHandles' => entity_handles_soap
         }
       end
       
