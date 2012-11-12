@@ -31,26 +31,8 @@ module Economic
     
     # Gets data for Entity from the API. Returns Hash with the response data
     def get_data_array(entity_handles)
-      # entity_handles = entities.map {|handle| Entity::Handle.new(handle) unless handle.is_a?(Entity::Handle) }
-
       response = session.request(entity_class.soap_action(:get_data_array)) do
-        # 'EntryHandle' => { 'SerialNumber' => handle.serial_number }
-        # <EntryHandle>
-        #                   <SerialNumber>int</SerialNumber>
-        #                 </EntryHandle>
-        
-        
-        # response = parse @@economic.request :debtor_get_all
-        #       numbers = response[:debtor_handle].collect {|dh|  { "Number" => dh[:number] } }
-        #       result = @@economic.request "Debtor_GetDataArray" do
-        #         soap.body = { entity_handles: { "DebtorHandle" => numbers } }
-        #       end
-        
-        puts entity_handles
-        
         entity_handles_soap = entity_handles.map {|handle| { 'SerialNumber' => handle.number } }
-        puts entity_handles_soap
-        
         soap.body = {
           'entityHandles' => { "EntryHandle" => entity_handles_soap }
         }
