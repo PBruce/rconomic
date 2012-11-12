@@ -28,6 +28,21 @@ module Economic
 
       build_array(response)
     end
+    
+    # Gets data for Entity from the API. Returns Hash with the response data
+    def get_data_array(entities)
+      entity_handles = entities.map {|handle| Entity::Handle.new(handle) unless handle.is_a?(Entity::Handle)
+
+      response = session.request(entity_class.soap_action(:get_data_array)) do
+        
+        
+        soap.body = {
+          'entityHandles' => entity_handles.map {|handle| handle.to_hash }
+        }
+      end
+      
+      build_array(response)
+    end
 
     def get_last_used_serial_number
       response = session.request(entity_class.soap_action('GetLastUsedSerialNumber'))
