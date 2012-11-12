@@ -56,7 +56,6 @@ module Economic
         }
       end
       
-      build_array(response)
     end
 
     def get_last_used_serial_number
