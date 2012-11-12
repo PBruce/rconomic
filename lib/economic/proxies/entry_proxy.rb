@@ -40,7 +40,7 @@ module Economic
         #                 </EntryHandle>
         
         soap.body = {
-          'entityHandles' => entity_handles.map {|handle| { 'EntryHandle' => { 'SerialNumber' => handle.serial_number } } }
+          'entityHandles' => entity_handles.map {|handle| { 'EntryHandle' => { 'SerialNumber' => handle.number } } }
         }
       end
       
