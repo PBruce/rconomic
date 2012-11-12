@@ -56,6 +56,7 @@ module Economic
         }
       end
       
+      response[:entry_data].map {|entry| Economic::Entry.new(entry) }
     end
 
     def get_last_used_serial_number
