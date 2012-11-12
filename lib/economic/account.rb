@@ -26,6 +26,14 @@ module Economic
     
     protected
     
+    def build_array(response)
+      entry_handles = [ response[:entry_handle] ].flatten.compact
+
+      entry_handles.map do |entry_handle|
+        entry_handle[:serial_number].to_i
+      end
+    end
+    
     def build_soap_data
       data = ActiveSupport::OrderedHash.new
 
