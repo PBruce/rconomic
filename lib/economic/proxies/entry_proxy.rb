@@ -52,7 +52,7 @@ module Economic
         puts entity_handles_soap
         
         soap.body = {
-          'entityHandles' => { "EntityHandle" => entity_handles_soap }
+          'entityHandles' => { "EntryHandle" => entity_handles_soap }
         }
       end
       
