@@ -34,8 +34,13 @@ module Economic
       entity_handles = entities.map {|handle| Entity::Handle.new(handle) unless handle.is_a?(Entity::Handle) }
 
       response = session.request(entity_class.soap_action(:get_data_array)) do
+        # 'EntryHandle' => { 'SerialNumber' => handle.serial_number }
+        # <EntryHandle>
+        #                   <SerialNumber>int</SerialNumber>
+        #                 </EntryHandle>
+        
         soap.body = {
-          'entityHandles' => entity_handles.map {|handle| handle.to_hash }
+          'entityHandles' => entity_handles.map {|handle| 'EntryHandle' => { 'SerialNumber' => handle.serial_number } }
         }
       end
       
