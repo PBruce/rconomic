@@ -12,6 +12,7 @@ module Economic
     def client
       @client ||= Savon::Client.new do
         wsdl.document = File.expand_path(File.join(File.dirname(__FILE__), "economic.wsdl"))
+        http.proxy = "http://localhost:8888"
       end
     end
 
