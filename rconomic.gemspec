@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.version     = Rconomic::VERSION
   s.platform    = Gem::Platform::RUBY
 
-  s.add_runtime_dependency "savon", "2.1.0"
+  s.add_runtime_dependency "savon", "1.2.0"
   s.add_runtime_dependency "gyoku", "1.0.0"
 
   s.add_runtime_dependency "activesupport", "~> 3.0"
