@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
 
   s.add_runtime_dependency "savon", "1.2.0"
-  s.add_runtime_dependency "gyoku", "0.4.5"
+  s.add_runtime_dependency "gyoku", "1.0.0"
 
   s.add_runtime_dependency "activesupport", "~> 3.0"
 
