@@ -17,11 +17,8 @@ Gem::Specification.new do |s|
   s.version     = Rconomic::VERSION
   s.platform    = Gem::Platform::RUBY
 
-  # As long as we use Savon 0.9.5, we need to tie down the max version
-  # of gyoku as 0.4.5 is not backwards compatible. If we update Savon,
-  # we should remove the gyoku constraint.
   s.add_runtime_dependency "savon", "2.1.0"
-  s.add_runtime_dependency "gyoku", "0.4.4"
+  s.add_runtime_dependency "gyoku", "1.0.0"
 
   s.add_runtime_dependency "activesupport", "~> 3.0"
 
